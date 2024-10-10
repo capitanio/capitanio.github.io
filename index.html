@@ -34,8 +34,14 @@
             margin-bottom: 20px;
         }
         .blog {
-            border-top: 2px solid #000;
+            border-top: 4px solid #000;
+            border-bottom: 4px solid #000;
             padding-top: 10px;
+        }
+        .blogPost {
+            border : 2px solid #000;
+            padding-top: 10px;
+            margin-bottom: 10px;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -241,8 +247,9 @@
             <h2>Curriculum Vitae</h2>
             <p>Il CV completo è scaricabile <a href="CV+pubblicazioni.pdf">qui</a></p>
         </div>
-        <div class="blog">
+        <section class="blog">
             <h2>Blog</h2>
+            <article class="blogPost">
             <h3>Laboratorio di Intelligenza Artificiale in Python</h3>
             <p>
                 Data: 30 settembre 2024<br><br>
@@ -252,7 +259,8 @@
                 Sono graditi commenti sul lavoro. Potete inviarli 
                 <a href="mailto:lcapitanio@luiss.it?subject=Commenti%20bozza">qui</a>. 
             </p>
-        </div>
+        </article>
+        </section>
     </div>
 </body>
 </html>

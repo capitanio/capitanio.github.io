@@ -82,20 +82,20 @@
     <script type="text/javascript">
         var _iub = _iub || [];
         _iub.csConfiguration = {"siteId":3813334,"cookiePolicyId":20900898,"lang":"it","storage":{"useSiteId":true}};
-        </script>
-        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3813334.js"></script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+    </script>
+    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3813334.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VNK2YDR2HZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VNK2YDR2HZ');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNK2YDR2HZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-VNK2YDR2HZ');
+    </script>
     <script>
         jQuery(document).ready(function($) {
             
@@ -130,148 +130,148 @@
                 
                 // Only run if canvas is over x px
                 //if (canvas.width > 100) {
-                var ctx = canvas.getContext("2d");
-                
-                var MAIN_COLOR = "#666",
-                MAIN_COLOR_RGB = convertHex(MAIN_COLOR,0.5);
-                SEC_COLOR = "#aaee00",
-                BORDER_COLOR = "#aaee00",
-                LINE_ALPHA = 100,
-                NUM_BALLS = 100, // higher is less
-                BALL_RAD = 6, //3
-                BALL_RAD_MIN = 2,
-                SPEED = 0.3,
-                GLOB_ALPHA = 0.5,
-                MOUSE_RAD = 100,
-                CONN_DIST = 100;
-                FPS = 60;
-                
-                var TAU = 2 * Math.PI;
-                
-                times = [];
-                function loop() {
-                    if (currentGlobalID === currentScopeID ) {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        update();
-                        draw();
-                        requestId = requestAnimationFrame(loop);
-                    }
-                }
-                
-                function stopAnimation(e) {
-                    cancelAnimationFrame(requestId);
-                }
-                
-                function Ball (startX, startY, startVelX, startVelY) {
-                    this.x = startX || Math.random() * canvas.width;
-                    this.y = startY || Math.random() * canvas.height;
-                    this.vel = {
-                        x: startVelX || Math.random() * SPEED * 2 - SPEED,
-                        y: startVelY || Math.random() * SPEED *2 - SPEED
-                    };
-                    this.update = function(canvas) {
-                        if (this.x > canvas.width + 50 || this.x < -50) {
-                            this.vel.x = -this.vel.x;
-                        }
-                        if (this.y > canvas.height + 50 || this.y < -50) {
-                            this.vel.y = -this.vel.y;
-                        }
-                        this.x += this.vel.x;
-                        this.y += this.vel.y;
-                    };
-                    this.draw = function(ctx, can) {
-                        ctx.beginPath();
-                        var distM = distMouse(this);
-                        if (distM > MOUSE_RAD) {
-                            ctx.fillStyle = MAIN_COLOR;
-                            ctx.globalAlpha =  GLOB_ALPHA;
-                            ctx.arc((0.5 + this.x) | 0, (0.5 + this.y) | 0, BALL_RAD_MIN, 0, TAU, false);
-                        } else {
-                            ctx.fillStyle = SEC_COLOR;
-                            ctx.strokeStyle= BORDER_COLOR;
-                            ctx.globalAlpha = 1;
-                            var BALL_RAD_DYN = (distM > CONN_DIST ? BALL_RAD_MIN : BALL_RAD * (1 - distM / CONN_DIST))
-                            ctx.arc((0.5 + this.x) | 0, (0.5 + this.y) | 0, BALL_RAD_DYN, 0, TAU, false);
-                            ctx.stroke();
-                        }
-                        
-                        ctx.fill();
-                    }
-                }
-                
-                var balls = [];
-                for (var i = 0; i < canvas.width * canvas.height / (NUM_BALLS*NUM_BALLS); i++) {
-                    balls.push(new Ball(Math.random() * canvas.width, Math.random() * canvas.height));
-                }
-                
-                var lastTime = Date.now();
-                function update() {
-                    var diff = Date.now() - lastTime;
-                    for (var frame = 0; frame * 16.6667 < diff; frame++) {
-                        for (var index = 0; index < balls.length; index++) {
-                            balls[index].update(canvas);
+                    var ctx = canvas.getContext("2d");
+                    
+                    var MAIN_COLOR = "#666",
+                    MAIN_COLOR_RGB = convertHex(MAIN_COLOR,0.5);
+                    SEC_COLOR = "#aaee00",
+                    BORDER_COLOR = "#aaee00",
+                    LINE_ALPHA = 100,
+                    NUM_BALLS = 100, // higher is less
+                    BALL_RAD = 6, //3
+                    BALL_RAD_MIN = 2,
+                    SPEED = 0.3,
+                    GLOB_ALPHA = 0.5,
+                    MOUSE_RAD = 100,
+                    CONN_DIST = 100;
+                    FPS = 60;
+                    
+                    var TAU = 2 * Math.PI;
+                    
+                    times = [];
+                    function loop() {
+                        if (currentGlobalID === currentScopeID ) {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            update();
+                            draw();
+                            requestId = requestAnimationFrame(loop);
                         }
                     }
-                    lastTime = Date.now();
-                }
-                var mouseX = -1e9, mouseY = -1e9;
-                document.addEventListener('mousemove', function(event) {
-                    mouseX = event.clientX;
-                    mouseY = event.clientY;
-                });
-                
-                function distMouse(ball) {
-                    return Math.hypot(ball.x - mouseX, ball.y - mouseY);
-                }
-                
-                function draw() {
-                    for (var index = 0; index < balls.length; index++) {
-                        var ball = balls[index];
-                        ctx.beginPath();
-                        for (var index2 = balls.length - 1; index2 > index; index2 += -1) {
-                            var ball2 = balls[index2];
-                            var dist = Math.hypot(ball.x - ball2.x, ball.y - ball2.y);
-                            if (dist < CONN_DIST) {
-                                var distM = distMouse(ball2);
-                                var line_alp = 1-(dist/CONN_DIST);
-                                if (distM > MOUSE_RAD) {
-                                    ctx.strokeStyle = MAIN_COLOR;
-                                    ctx.globalAlpha =  ctx.globalAlpha = 1 - (dist > CONN_DIST ? .8 : dist / CONN_DIST);
-                                } else {
-                                    //ctx.fillStyle = 'rgba(255,0,0,1)';
-                                    
-                                    ctx.strokeStyle = SEC_COLOR;
-                                    ctx.globalAlpha = 1;
-                                }
-                                ctx.moveTo((0.5 + ball.x) | 0, (0.5 + ball.y) | 0);
-                                ctx.lineTo((0.5 + ball2.x) | 0, (0.5 + ball2.y) | 0);
+                    
+                    function stopAnimation(e) {
+                        cancelAnimationFrame(requestId);
+                    }
+                    
+                    function Ball (startX, startY, startVelX, startVelY) {
+                        this.x = startX || Math.random() * canvas.width;
+                        this.y = startY || Math.random() * canvas.height;
+                        this.vel = {
+                            x: startVelX || Math.random() * SPEED * 2 - SPEED,
+                            y: startVelY || Math.random() * SPEED *2 - SPEED
+                        };
+                        this.update = function(canvas) {
+                            if (this.x > canvas.width + 50 || this.x < -50) {
+                                this.vel.x = -this.vel.x;
+                            }
+                            if (this.y > canvas.height + 50 || this.y < -50) {
+                                this.vel.y = -this.vel.y;
+                            }
+                            this.x += this.vel.x;
+                            this.y += this.vel.y;
+                        };
+                        this.draw = function(ctx, can) {
+                            ctx.beginPath();
+                            var distM = distMouse(this);
+                            if (distM > MOUSE_RAD) {
+                                ctx.fillStyle = MAIN_COLOR;
+                                ctx.globalAlpha =  GLOB_ALPHA;
+                                ctx.arc((0.5 + this.x) | 0, (0.5 + this.y) | 0, BALL_RAD_MIN, 0, TAU, false);
+                            } else {
+                                ctx.fillStyle = SEC_COLOR;
+                                ctx.strokeStyle= BORDER_COLOR;
+                                ctx.globalAlpha = 1;
+                                var BALL_RAD_DYN = (distM > CONN_DIST ? BALL_RAD_MIN : BALL_RAD * (1 - distM / CONN_DIST))
+                                ctx.arc((0.5 + this.x) | 0, (0.5 + this.y) | 0, BALL_RAD_DYN, 0, TAU, false);
+                                ctx.stroke();
+                            }
+                            
+                            ctx.fill();
+                        }
+                    }
+                    
+                    var balls = [];
+                    for (var i = 0; i < canvas.width * canvas.height / (NUM_BALLS*NUM_BALLS); i++) {
+                        balls.push(new Ball(Math.random() * canvas.width, Math.random() * canvas.height));
+                    }
+                    
+                    var lastTime = Date.now();
+                    function update() {
+                        var diff = Date.now() - lastTime;
+                        for (var frame = 0; frame * 16.6667 < diff; frame++) {
+                            for (var index = 0; index < balls.length; index++) {
+                                balls[index].update(canvas);
                             }
                         }
-                        ctx.stroke();
-                        ball.draw(ctx, canvas);
+                        lastTime = Date.now();
                     }
+                    var mouseX = -1e9, mouseY = -1e9;
+                    document.addEventListener('mousemove', function(event) {
+                        mouseX = event.clientX;
+                        mouseY = event.clientY;
+                    });
+                    
+                    function distMouse(ball) {
+                        return Math.hypot(ball.x - mouseX, ball.y - mouseY);
+                    }
+                    
+                    function draw() {
+                        for (var index = 0; index < balls.length; index++) {
+                            var ball = balls[index];
+                            ctx.beginPath();
+                            for (var index2 = balls.length - 1; index2 > index; index2 += -1) {
+                                var ball2 = balls[index2];
+                                var dist = Math.hypot(ball.x - ball2.x, ball.y - ball2.y);
+                                if (dist < CONN_DIST) {
+                                    var distM = distMouse(ball2);
+                                    var line_alp = 1-(dist/CONN_DIST);
+                                    if (distM > MOUSE_RAD) {
+                                        ctx.strokeStyle = MAIN_COLOR;
+                                        ctx.globalAlpha =  ctx.globalAlpha = 1 - (dist > CONN_DIST ? .8 : dist / CONN_DIST);
+                                    } else {
+                                        //ctx.fillStyle = 'rgba(255,0,0,1)';
+                                        
+                                        ctx.strokeStyle = SEC_COLOR;
+                                        ctx.globalAlpha = 1;
+                                    }
+                                    ctx.moveTo((0.5 + ball.x) | 0, (0.5 + ball.y) | 0);
+                                    ctx.lineTo((0.5 + ball2.x) | 0, (0.5 + ball2.y) | 0);
+                                }
+                            }
+                            ctx.stroke();
+                            ball.draw(ctx, canvas);
+                        }
+                    }
+                    
+                    // Start
+                    loop();
+                    //}
+                    var runNetworkAnimObj = new Object()
+                    runNetworkAnimObj.stopAnimation = stopAnimation
+                    return runNetworkAnimObj 
                 }
+                Multi = new runNetworkAnim();
                 
-                // Start
-                loop();
-                //}
-                var runNetworkAnimObj = new Object()
-                runNetworkAnimObj.stopAnimation = stopAnimation
-                return runNetworkAnimObj 
-            }
-            Multi = new runNetworkAnim();
-            
-        });
-    </script>
-
-</head>
-<body >
-    <canvas id="network" style="position:fixed; top:0;left:0"></canvas>
-    <!-- <canvas id="sfondo" width="100%" height="100%" style="position:fixed; top:0;left:0"> -->
-    </canvas>
-    <div class="container">
-        <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcapitanio.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
-        <h1>Luciano Capitanio Ph.D.</h1>
+            });
+        </script>
+        <script data-goatcounter="https://pizzico.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+    </head>
+    <body >
+        <canvas id="network" style="position:fixed; top:0;left:0"></canvas>
+        <!-- <canvas id="sfondo" width="100%" height="100%" style="position:fixed; top:0;left:0"> -->
+        </canvas>
+        <div class="container">
+            <h1>Luciano Capitanio Ph.D.</h1>
             <div class="section">
                 <h2>Chi sono</h2>
                 <p>
@@ -296,70 +296,70 @@
                         Informatica presso l'Universita LUMSA di Roma
                     </li>
                 </ul>
-            <h2>Curriculum Vitae</h2>
-            <p>Il CV completo è scaricabile <a href="CV+pubblicazioni.pdf">qui</a></p>
+                <h2>Curriculum Vitae</h2>
+                <p>Il CV completo è scaricabile <a href="CV+pubblicazioni.pdf">qui</a></p>
+            </div>
+            <section class="blog">
+                <h2>Blog</h2>
+                <article class="blogPostFirst">
+                    <h3>📌 Laboratorio di Intelligenza Artificiale in Python</h3>
+                    <p>Data: 05 luglio 2025</p>
+                    <p>
+                        Oggi è stato pubblicato il mio ultimo lavoro "Laboratorio di Intelligenza Artificiale in Python" su
+                        <a href="https://amzn.to/4eOktmA" target="_blank">Amazon.</a>
+                        Ovviamente, sono graditi commenti e suggerimenti sul lavoro. Potete inviarli 
+                        <a href="mailto:lcapitanio@luiss.it?subject=Commenti%20LIA">qui</a>. 
+                    </p>
+                </article>
+                <article class="blogPost">
+                    <h3>L’intelligenza artificiale nella Pubblica Amministrazione: un passo avanti, ma con cautela</h3>
+                    <p>Data post: 12 luglio 2025</p>
+                    <p>
+                        L’intelligenza artificiale (IA) sta rapidamente trasformando la Pubblica Amministrazione (PA) italiana, promettendo maggiore efficienza, servizi più rapidi e una gestione dei dati più intelligente. Tuttavia, l'adozione di queste tecnologie solleva anche interrogativi su governance, qualità dei dati e impatti occupazionali. (<a href="https://www.agendadigitale.eu/cittadinanza-digitale/ia-nella-pa-tra-norme-e-realta-dal-rapporto-agid-alla-pratica-amministrativa/" target="_blank">Fonte: Agenda Digitale</a>)
+                        
+                        <h4>I dati dell'AgID: uno spunto per riflessioni</h4>
+                        Secondo l'indagine condotta dall'Agenzia per l'Italia Digitale (AgID), il 42% dei progetti di IA nelle PA mira a migliorare l'efficienza operativa, il 24% a potenziare la gestione dei dati e il 18% a ottimizzare l'accesso ai servizi. Le tecnologie più utilizzate sono il machine learning tradizionale e, in crescita, l'IA generativa per testi e linguaggio naturale. Oltre il 60% dei progetti include chatbot e assistenti virtuali. Tuttavia, emerge una scarsa attenzione alla qualità dei dati, con possibili impatti negativi sull'affidabilità dei sistemi. (<a href="https://www.agid.gov.it/it/notizie/ia-nella-pubblica-amministrazione-pubblicata-la-prima-indagine-di-agid-svolta-presso-le" target="_blank">Fonte: AgID</a>)
+                        
+                        <h4>Le sfide da affrontare</h4>
+                        <ul>
+                            <li><strong>Qualità dei dati:</strong> molti progetti utilizzano dati interni, talvolta inclusi dati personali o sintetici, ma con scarsa attenzione alla loro accuratezza e completezza. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
+                            <li><strong>Competenze interne limitate:</strong> le amministrazioni dipendono fortemente da consulenti esterni, con solo il 20% dei progetti che ha indicatori di performance (KPI) definiti. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali" target="_blank">Fonte: Informa Entilocali</a>)</li>
+                            <li><strong>Trasparenza e responsabilità:</strong> è fondamentale garantire che le decisioni automatizzate siano spiegabili e che sia chiaro chi è responsabile in caso di errori. (<a href="https://www.federprivacy.org/informazione/punto-di-vista/l-adozione-dell-intelligenza-artificiale-nella-pubblica-amministrazione-richiede-un-cambio-di-paradigma-organizzativo-e-culturale?" target="_blank">Fonte: Federprivacy</a>)</li>
+                        </ul>
+                        
+                        <h4>Le raccomandazioni per un'adozione efficace</h4>
+                        <ul>
+                            <li><strong>Migliorare la qualità dei dati:</strong> garantire accuratezza, interoperabilità e rispetto della privacy. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
+                            <li><strong>Innovare il procurement pubblico:</strong> semplificare l'accesso alle soluzioni IA e promuovere gare dedicate precedute da progetti pilota. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
+                            <li><strong>Pianificazione strategica:</strong> definire obiettivi chiari, KPI e attenzione alla scalabilità. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
+                            <li><strong>Coinvolgimento trasversale:</strong> adottare metodologie di open innovation e coinvolgere le strutture interne. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
+                        </ul>
+                        
+                        <h4>Conclusioni</h4>
+                        L'IA ha il potenziale per rivoluzionare la PA, ma è essenziale adottarla in modo responsabile e strategico. Solo con una gestione attenta e una governance solida, l'IA potrà offrire i benefici promessi senza compromettere la fiducia dei cittadini. (<a href="https://servicematica.com/intelligenza-artificiale-nella-pubblica-amministrazione-nuove-regole-per-proteggere-i-dati-dei-cittadini/" target="_blank">Fonte: Servicematica</a>, <a href="https://open.gov.it/notizie/consultazione-pubblica-aperta-linee-guida-ia" target="_blank">Fonte: OpenGov</a>)
+                    </p>
+                </article>            
+                <article class="blogPost">
+                    <h3>Il modello LLM di IBM Granite</h3>
+                    <p>Data: 26 ottobre 2024</p>
+                    <p>
+                        Oramai ci sono tantissimi modelli LLM disponibili con varie licenze di uso.
+                        Molto spesso la genesi di questi modelli provoca dubbi di carattere etico e morale per la loro adozione.
+                        Incredibilmente, la presentazione di Granite della IBM è stata una piacevole notizia.
+                        Si tratta di un modello Open Source con licenza Apache ver. 2, training set noto e 
+                        disponibilità di modelli ristretti scaricabili su un normale PC.
+                        Mi sembra una buona notizia.
+                        Informazioni dettagliate e diversi tutorial si possono trovare <a href="https://www.ibm.com/granite">qui</a>.
+                    </p>    
+                </article>
+            </section>
         </div>
-        <section class="blog">
-            <h2>Blog</h2>
-            <article class="blogPostFirst">
-                <h3>📌 Laboratorio di Intelligenza Artificiale in Python</h3>
-                <p>Data: 05 luglio 2025</p>
-                <p>
-                    Oggi è stato pubblicato il mio ultimo lavoro "Laboratorio di Intelligenza Artificiale in Python" su
-                    <a href="https://amzn.to/4eOktmA" target="_blank">Amazon.</a>
-                    Ovviamente, sono graditi commenti e suggerimenti sul lavoro. Potete inviarli 
-                    <a href="mailto:lcapitanio@luiss.it?subject=Commenti%20LIA">qui</a>. 
-                </p>
-            </article>
-            <article class="blogPost">
-                <h3>L’intelligenza artificiale nella Pubblica Amministrazione: un passo avanti, ma con cautela</h3>
-                <p>Data post: 12 luglio 2025</p>
-                <p>
-                    L’intelligenza artificiale (IA) sta rapidamente trasformando la Pubblica Amministrazione (PA) italiana, promettendo maggiore efficienza, servizi più rapidi e una gestione dei dati più intelligente. Tuttavia, l'adozione di queste tecnologie solleva anche interrogativi su governance, qualità dei dati e impatti occupazionali. (<a href="https://www.agendadigitale.eu/cittadinanza-digitale/ia-nella-pa-tra-norme-e-realta-dal-rapporto-agid-alla-pratica-amministrativa/" target="_blank">Fonte: Agenda Digitale</a>)
-                    
-                    <h4>I dati dell'AgID: uno spunto per riflessioni</h4>
-                    Secondo l'indagine condotta dall'Agenzia per l'Italia Digitale (AgID), il 42% dei progetti di IA nelle PA mira a migliorare l'efficienza operativa, il 24% a potenziare la gestione dei dati e il 18% a ottimizzare l'accesso ai servizi. Le tecnologie più utilizzate sono il machine learning tradizionale e, in crescita, l'IA generativa per testi e linguaggio naturale. Oltre il 60% dei progetti include chatbot e assistenti virtuali. Tuttavia, emerge una scarsa attenzione alla qualità dei dati, con possibili impatti negativi sull'affidabilità dei sistemi. (<a href="https://www.agid.gov.it/it/notizie/ia-nella-pubblica-amministrazione-pubblicata-la-prima-indagine-di-agid-svolta-presso-le" target="_blank">Fonte: AgID</a>)
-                    
-                    <h4>Le sfide da affrontare</h4>
-                    <ul>
-                        <li><strong>Qualità dei dati:</strong> molti progetti utilizzano dati interni, talvolta inclusi dati personali o sintetici, ma con scarsa attenzione alla loro accuratezza e completezza. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
-                        <li><strong>Competenze interne limitate:</strong> le amministrazioni dipendono fortemente da consulenti esterni, con solo il 20% dei progetti che ha indicatori di performance (KPI) definiti. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali" target="_blank">Fonte: Informa Entilocali</a>)</li>
-                        <li><strong>Trasparenza e responsabilità:</strong> è fondamentale garantire che le decisioni automatizzate siano spiegabili e che sia chiaro chi è responsabile in caso di errori. (<a href="https://www.federprivacy.org/informazione/punto-di-vista/l-adozione-dell-intelligenza-artificiale-nella-pubblica-amministrazione-richiede-un-cambio-di-paradigma-organizzativo-e-culturale?" target="_blank">Fonte: Federprivacy</a>)</li>
-                    </ul>
-                    
-                    <h4>Le raccomandazioni per un'adozione efficace</h4>
-                    <ul>
-                        <li><strong>Migliorare la qualità dei dati:</strong> garantire accuratezza, interoperabilità e rispetto della privacy. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
-                        <li><strong>Innovare il procurement pubblico:</strong> semplificare l'accesso alle soluzioni IA e promuovere gare dedicate precedute da progetti pilota. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
-                        <li><strong>Pianificazione strategica:</strong> definire obiettivi chiari, KPI e attenzione alla scalabilità. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
-                        <li><strong>Coinvolgimento trasversale:</strong> adottare metodologie di open innovation e coinvolgere le strutture interne. (<a href="https://www.informaentilocali.net/2025/07/08/intelligenza-artificiale-nella-pa-la-prima-indagine-dellagid-svolta-presso-le-amministrazioni-centrali/" target="_blank">Fonte: Informa Entilocali</a>)</li>
-                    </ul>
-                    
-                    <h4>Conclusioni</h4>
-                    L'IA ha il potenziale per rivoluzionare la PA, ma è essenziale adottarla in modo responsabile e strategico. Solo con una gestione attenta e una governance solida, l'IA potrà offrire i benefici promessi senza compromettere la fiducia dei cittadini. (<a href="https://servicematica.com/intelligenza-artificiale-nella-pubblica-amministrazione-nuove-regole-per-proteggere-i-dati-dei-cittadini/" target="_blank">Fonte: Servicematica</a>, <a href="https://open.gov.it/notizie/consultazione-pubblica-aperta-linee-guida-ia" target="_blank">Fonte: OpenGov</a>)
-                </p>
-            </article>            
-            <article class="blogPost">
-                <h3>Il modello LLM di IBM Granite</h3>
-                <p>Data: 26 ottobre 2024</p>
-                <p>
-                    Oramai ci sono tantissimi modelli LLM disponibili con varie licenze di uso.
-                    Molto spesso la genesi di questi modelli provoca dubbi di carattere etico e morale per la loro adozione.
-                    Incredibilmente, la presentazione di Granite della IBM è stata una piacevole notizia.
-                    Si tratta di un modello Open Source con licenza Apache ver. 2, training set noto e 
-                    disponibilità di modelli ristretti scaricabili su un normale PC.
-                    Mi sembra una buona notizia.
-                    Informazioni dettagliate e diversi tutorial si possono trovare <a href="https://www.ibm.com/granite">qui</a>.
-                </p>    
-            </article>
-        </section>
-    </div>
-    <footer>
-        <div align="center" hidden>
-            <img alt="Visitor Stats" 
+        <footer>
+            <div align="center" hidden>
+                <img alt="Visitor Stats" 
                 src="https://widgetbite.com/stats/capitanio"/>  
-        </div>
-    </footer>
-</body>
-</html>
-
+            </div>
+        </footer>
+    </body>
+    </html>
+    
